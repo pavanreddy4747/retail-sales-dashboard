@@ -2,7 +2,6 @@ import sqlite3
 import streamlit as st
 import plotly.express as px
 import plotly.graph_objects as go
-from datetime import datetime
 
 # Page configuration
 st.set_page_config(
@@ -54,7 +53,7 @@ conn = sqlite3.connect('sales_data.db')
 df = conn.execute("SELECT * FROM sales").fetchall()
 conn.close()
 
-# Convert to list of dicts for easier handling
+# Convert to list of dicts
 sales_data = []
 for row in df:
     sales_data.append({
@@ -147,12 +146,5 @@ st.dataframe(
 
 # Footer
 st.divider()
-st.markdown(
-    """
-    <div style='text-align: center; color: grey;'>
-        <p>🚀 Built with Streamlit | Data-driven Retail Analytics</p>
-        <p>Check out my GitHub for more projects!</p>
-    </div>
-    ",
-    unsafe_allow_html=True
-)
+st.markdown("---")
+st.caption("Built with Streamlit | Data-driven Retail Analytics")
